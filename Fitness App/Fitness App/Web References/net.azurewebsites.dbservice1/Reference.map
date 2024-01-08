@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="https://dbservice1.azurewebsites.net/CRUDService.asmx?disco" filename="CRUDService.disco" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://dbservice1.azurewebsites.net/CRUDService.asmx?wsdl" filename="CRUDService.wsdl" />
+  </Results>
+</DiscoveryClientResultsFile>

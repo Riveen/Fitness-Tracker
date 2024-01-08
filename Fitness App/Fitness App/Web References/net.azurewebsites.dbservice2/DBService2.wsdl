@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetAll">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertdb">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="date" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="calories" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="intake" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertdbResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="insertdbResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updatedb">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="date" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="calories" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="intake" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updatedbResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updatedbResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="deleteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataTable" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAll" />
+  </wsdl:message>
+  <wsdl:message name="GetAllSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertdbSoapIn">
+    <wsdl:part name="parameters" element="tns:insertdb" />
+  </wsdl:message>
+  <wsdl:message name="insertdbSoapOut">
+    <wsdl:part name="parameters" element="tns:insertdbResponse" />
+  </wsdl:message>
+  <wsdl:message name="updatedbSoapIn">
+    <wsdl:part name="parameters" element="tns:updatedb" />
+  </wsdl:message>
+  <wsdl:message name="updatedbSoapOut">
+    <wsdl:part name="parameters" element="tns:updatedbResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteSoapIn">
+    <wsdl:part name="parameters" element="tns:delete" />
+  </wsdl:message>
+  <wsdl:message name="deleteSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllHttpGetIn" />
+  <wsdl:message name="GetAllHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="insertdbHttpGetIn">
+    <wsdl:part name="date" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="description" type="s:string" />
+    <wsdl:part name="calories" type="s:string" />
+    <wsdl:part name="intake" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="insertdbHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="updatedbHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="date" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="description" type="s:string" />
+    <wsdl:part name="calories" type="s:string" />
+    <wsdl:part name="intake" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="updatedbHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="deleteHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="deleteHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetAllHttpPostIn" />
+  <wsdl:message name="GetAllHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="insertdbHttpPostIn">
+    <wsdl:part name="date" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="description" type="s:string" />
+    <wsdl:part name="calories" type="s:string" />
+    <wsdl:part name="intake" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="insertdbHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="updatedbHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="date" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="description" type="s:string" />
+    <wsdl:part name="calories" type="s:string" />
+    <wsdl:part name="intake" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="updatedbHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="deleteHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="deleteHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="DBService2Soap">
+    <wsdl:operation name="GetAll">
+      <wsdl:input message="tns:GetAllSoapIn" />
+      <wsdl:output message="tns:GetAllSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertdb">
+      <wsdl:input message="tns:insertdbSoapIn" />
+      <wsdl:output message="tns:insertdbSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updatedb">
+      <wsdl:input message="tns:updatedbSoapIn" />
+      <wsdl:output message="tns:updatedbSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <wsdl:input message="tns:deleteSoapIn" />
+      <wsdl:output message="tns:deleteSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DBService2HttpGet">
+    <wsdl:operation name="GetAll">
+      <wsdl:input message="tns:GetAllHttpGetIn" />
+      <wsdl:output message="tns:GetAllHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertdb">
+      <wsdl:input message="tns:insertdbHttpGetIn" />
+      <wsdl:output message="tns:insertdbHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updatedb">
+      <wsdl:input message="tns:updatedbHttpGetIn" />
+      <wsdl:output message="tns:updatedbHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <wsdl:input message="tns:deleteHttpGetIn" />
+      <wsdl:output message="tns:deleteHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DBService2HttpPost">
+    <wsdl:operation name="GetAll">
+      <wsdl:input message="tns:GetAllHttpPostIn" />
+      <wsdl:output message="tns:GetAllHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertdb">
+      <wsdl:input message="tns:insertdbHttpPostIn" />
+      <wsdl:output message="tns:insertdbHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updatedb">
+      <wsdl:input message="tns:updatedbHttpPostIn" />
+      <wsdl:output message="tns:updatedbHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <wsdl:input message="tns:deleteHttpPostIn" />
+      <wsdl:output message="tns:deleteHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DBService2Soap" type="tns:DBService2Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAll">
+      <soap:operation soapAction="http://tempuri.org/GetAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertdb">
+      <soap:operation soapAction="http://tempuri.org/insertdb" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatedb">
+      <soap:operation soapAction="http://tempuri.org/updatedb" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <soap:operation soapAction="http://tempuri.org/delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DBService2Soap12" type="tns:DBService2Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAll">
+      <soap12:operation soapAction="http://tempuri.org/GetAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertdb">
+      <soap12:operation soapAction="http://tempuri.org/insertdb" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatedb">
+      <soap12:operation soapAction="http://tempuri.org/updatedb" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <soap12:operation soapAction="http://tempuri.org/delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DBService2HttpGet" type="tns:DBService2HttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetAll">
+      <http:operation location="/GetAll" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertdb">
+      <http:operation location="/insertdb" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatedb">
+      <http:operation location="/updatedb" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <http:operation location="/delete" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DBService2HttpPost" type="tns:DBService2HttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetAll">
+      <http:operation location="/GetAll" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertdb">
+      <http:operation location="/insertdb" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatedb">
+      <http:operation location="/updatedb" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <http:operation location="/delete" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DBService2">
+    <wsdl:port name="DBService2Soap" binding="tns:DBService2Soap">
+      <soap:address location="https://dbservice2.azurewebsites.net/DBService2.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DBService2Soap12" binding="tns:DBService2Soap12">
+      <soap12:address location="https://dbservice2.azurewebsites.net/DBService2.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DBService2HttpGet" binding="tns:DBService2HttpGet">
+      <http:address location="https://dbservice2.azurewebsites.net/DBService2.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DBService2HttpPost" binding="tns:DBService2HttpPost">
+      <http:address location="https://dbservice2.azurewebsites.net/DBService2.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

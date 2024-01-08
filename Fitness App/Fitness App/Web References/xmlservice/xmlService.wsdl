@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="write">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filepath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tbldata">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="writeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="writeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="read">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filepath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="readResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="readResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="predict_weight">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filepath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="predict_weightResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="predict_weightResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="predict_bmi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filepath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="predict_bmiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="predict_bmiResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fitness_stats">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="bmi" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="fitness_statsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fitness_statsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="writeSoapIn">
+    <wsdl:part name="parameters" element="tns:write" />
+  </wsdl:message>
+  <wsdl:message name="writeSoapOut">
+    <wsdl:part name="parameters" element="tns:writeResponse" />
+  </wsdl:message>
+  <wsdl:message name="readSoapIn">
+    <wsdl:part name="parameters" element="tns:read" />
+  </wsdl:message>
+  <wsdl:message name="readSoapOut">
+    <wsdl:part name="parameters" element="tns:readResponse" />
+  </wsdl:message>
+  <wsdl:message name="predict_weightSoapIn">
+    <wsdl:part name="parameters" element="tns:predict_weight" />
+  </wsdl:message>
+  <wsdl:message name="predict_weightSoapOut">
+    <wsdl:part name="parameters" element="tns:predict_weightResponse" />
+  </wsdl:message>
+  <wsdl:message name="predict_bmiSoapIn">
+    <wsdl:part name="parameters" element="tns:predict_bmi" />
+  </wsdl:message>
+  <wsdl:message name="predict_bmiSoapOut">
+    <wsdl:part name="parameters" element="tns:predict_bmiResponse" />
+  </wsdl:message>
+  <wsdl:message name="fitness_statsSoapIn">
+    <wsdl:part name="parameters" element="tns:fitness_stats" />
+  </wsdl:message>
+  <wsdl:message name="fitness_statsSoapOut">
+    <wsdl:part name="parameters" element="tns:fitness_statsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="xmlServiceSoap">
+    <wsdl:operation name="write">
+      <wsdl:input message="tns:writeSoapIn" />
+      <wsdl:output message="tns:writeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="read">
+      <wsdl:input message="tns:readSoapIn" />
+      <wsdl:output message="tns:readSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="predict_weight">
+      <wsdl:input message="tns:predict_weightSoapIn" />
+      <wsdl:output message="tns:predict_weightSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="predict_bmi">
+      <wsdl:input message="tns:predict_bmiSoapIn" />
+      <wsdl:output message="tns:predict_bmiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="fitness_stats">
+      <wsdl:input message="tns:fitness_statsSoapIn" />
+      <wsdl:output message="tns:fitness_statsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="xmlServiceSoap" type="tns:xmlServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="write">
+      <soap:operation soapAction="http://tempuri.org/write" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="read">
+      <soap:operation soapAction="http://tempuri.org/read" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="predict_weight">
+      <soap:operation soapAction="http://tempuri.org/predict_weight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="predict_bmi">
+      <soap:operation soapAction="http://tempuri.org/predict_bmi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fitness_stats">
+      <soap:operation soapAction="http://tempuri.org/fitness_stats" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="xmlServiceSoap12" type="tns:xmlServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="write">
+      <soap12:operation soapAction="http://tempuri.org/write" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="read">
+      <soap12:operation soapAction="http://tempuri.org/read" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="predict_weight">
+      <soap12:operation soapAction="http://tempuri.org/predict_weight" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="predict_bmi">
+      <soap12:operation soapAction="http://tempuri.org/predict_bmi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fitness_stats">
+      <soap12:operation soapAction="http://tempuri.org/fitness_stats" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="xmlService">
+    <wsdl:port name="xmlServiceSoap" binding="tns:xmlServiceSoap">
+      <soap:address location="https://localhost:44331/xmlService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="xmlServiceSoap12" binding="tns:xmlServiceSoap12">
+      <soap12:address location="https://localhost:44331/xmlService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

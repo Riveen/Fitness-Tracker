@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="yes"?>
+<DocumentElement>
+  <xmldata>
+    <ID>21b5fc36-fed1-4113-a42b-f26065ccef88</ID>
+    <Date>17/07/2023</Date>
+    <Weight>77</Weight>
+    <Height>175.5</Height>
+  </xmldata>
+  <xmldata>
+    <ID>2980d632-d98d-4d01-afe2-a11330299a36</ID>
+    <Date>16/07/2023</Date>
+    <Weight>70</Weight>
+    <Height>175.5</Height>
+  </xmldata>
+  <xmldata>
+    <ID>4e492ca1-04e5-4ebd-9218-eeae8558f3ad</ID>
+    <Date>18/07/2023</Date>
+    <Weight>75</Weight>
+    <Height>175.5</Height>
+  </xmldata>
+  <xmldata>
+    <ID>d6814194-1be8-412c-8426-232f62be302c</ID>
+    <Date>19/07/2023</Date>
+    <Weight>77</Weight>
+    <Height>175.5</Height>
+  </xmldata>
+  <xmldata>
+    <ID>c64a37e9-04cd-4623-b54f-201fbb5c557c</ID>
+    <Date>22/07/2023</Date>
+    <Weight>79</Weight>
+    <Height>175.5</Height>
+  </xmldata>
+</DocumentElement>
